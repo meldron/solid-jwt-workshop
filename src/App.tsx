@@ -28,6 +28,10 @@ const exampleToken =
 
 const tokenData = parseJwt(exampleToken);
 
+function prettyStringify(input: unknown): string {
+    return JSON.stringify(input, null, 2);
+}
+
 const App: Component = () => {
     return (
         <div class="grid m-5">
@@ -48,14 +52,14 @@ const App: Component = () => {
                 <div>
                     <h2 class="text-red-900">Header</h2>
                     <div class="mt-2">
-                        <pre>{JSON.stringify(tokenData.header, null, 2)}</pre>
+                        <pre>{prettyStringify(tokenData.header)}</pre>
                     </div>
                 </div>
                 <div class="divider md:hidden" />
                 <div>
                     <h2 class="text-red-900">Payload</h2>
                     <div class="mt-2">
-                        <pre>{JSON.stringify(tokenData.payload, null, 2)}</pre>
+                        <pre>{prettyStringify(tokenData.payload)}</pre>
                     </div>
                 </div>
             </div>
@@ -75,7 +79,7 @@ const App: Component = () => {
                     </div>
                 </div>
                 <div class="divider md:hidden" />
-                <div>
+                <div class="grid align-middle">
                     <h2 class="text-red-900">Status</h2>
                     <div>Unverified</div>
                 </div>
