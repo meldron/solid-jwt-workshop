@@ -1,0 +1,18 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "tsconfig.json"
+    },
+    "rules": {
+        "eqeqeq": "error",
+        "solid/no-destructure": "error",
+        "prettier/prettier": "error"
+    },
+    "plugins": ["solid", "prettier"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:solid/typescript",
+        "plugin:@typescript-eslint/recommended"
+        // "plugin:tailwindcss/recommended"
+    ]
+}
