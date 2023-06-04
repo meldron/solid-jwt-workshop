@@ -14,5 +14,6 @@
     "[css]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "css.customData": [".vscode/css_custom_data.json"]
+    "css.customData": [".vscode/css_custom_data.json"],
+    "cSpell.diagnosticLevel": "Hint"
 }
