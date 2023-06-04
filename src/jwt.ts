@@ -9,7 +9,7 @@ export interface JWT {
     encoded: string;
 }
 
-export function parseJwt(encoded: string): JWT {
+export function parseJwt(encoded: string): JWT | null {
     const parts = encoded.split(".");
 
     const headerEncoded = parts[0];
@@ -17,7 +17,7 @@ export function parseJwt(encoded: string): JWT {
     const signature = parts[2];
 
     if (headerEncoded === undefined || payloadEncoded === undefined || signature === undefined) {
-        throw new Error("invalid JWT");
+        return null;
     }
 
     let header: JWTHeader;
@@ -27,7 +27,7 @@ export function parseJwt(encoded: string): JWT {
         header = JSON.parse(atob(headerEncoded));
         payload = JSON.parse(atob(payloadEncoded));
     } catch (err) {
-        throw new Error("invalid JWT");
+        return null;
     }
 
     return { encoded, header, headerEncoded, payload, payloadEncoded, signature };

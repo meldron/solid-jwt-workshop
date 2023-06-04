@@ -52,14 +52,14 @@ const App: Component = () => {
                 <div>
                     <h2 class="text-red-900">Header</h2>
                     <div class="mt-2">
-                        <pre>{prettyStringify(tokenData.header)}</pre>
+                        <pre>{prettyStringify(tokenData?.header)}</pre>
                     </div>
                 </div>
                 <div class="divider md:hidden" />
                 <div>
                     <h2 class="text-red-900">Payload</h2>
                     <div class="mt-2">
-                        <pre>{prettyStringify(tokenData.payload)}</pre>
+                        <pre>{prettyStringify(tokenData?.payload)}</pre>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@ const App: Component = () => {
                 <div class="grid align-middle">
                     <h2 class="text-red-900">Signature</h2>
                     <div class="mt-2">
-                        <pre>{tokenData.signature}</pre>
+                        <pre>{tokenData?.signature}</pre>
                     </div>
                 </div>
                 <div class="divider md:hidden" />
