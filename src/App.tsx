@@ -34,7 +34,11 @@ const App: Component = () => {
             <div>
                 <h2 class="text-red-900">Token</h2>
                 <div class="form-control w-full mt-2">
-                    <textarea class="textarea border-blue-400 focus:outline-blue-400" placeholder="JWT Input">
+                    <textarea
+                        onInput={(event) => console.log(`JWT changed to: ${event.target.value}`)}
+                        class="textarea border-blue-400 focus:outline-blue-400"
+                        placeholder="JWT Input"
+                    >
                         {exampleToken}
                     </textarea>
                 </div>
