@@ -1,5 +1,5 @@
 {
-    "name": "jwt-exploration",
+    "name": "solid-jwt-workshop",
     "version": "0.1.0",
     "description": "Sample SolidJS project to explore JWT",
     "scripts": {
