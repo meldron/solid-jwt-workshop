@@ -6,6 +6,10 @@
     "rules": {
         "eqeqeq": "error",
         "solid/no-destructure": "error",
+        "solid/reactivity": "error",
+        "solid/no-innerhtml": "error",
+        "solid/prefer-classlist": "error",
+        "solid/event-handlers": "error",
         "prettier/prettier": "error"
     },
     "plugins": ["solid", "prettier"],
