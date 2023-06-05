@@ -1,6 +1,7 @@
 import { verify_jwt_hs256_signature } from "@meldron/jwt-helper";
 import { Component, createMemo } from "solid-js";
 import { JWT } from "../jwt";
+import { getSecret } from "../stores/tokenStore";
 
 export const Signature: Component<{ token: JWT | null; secret: string }> = (props) => {
     const signature = () => (props.token ? props.token.signature : "");
@@ -8,11 +9,11 @@ export const Signature: Component<{ token: JWT | null; secret: string }> = (prop
     const secretStatus = createMemo(() => {
         const encodedToken = props.token?.encoded ?? null;
 
-        if (props.secret === "" || encodedToken === null) {
+        if (getSecret() === "" || encodedToken === null) {
             return "Unknown";
         }
 
-        if (verify_jwt_hs256_signature(props.secret, encodedToken)) {
+        if (verify_jwt_hs256_signature(getSecret(), encodedToken)) {
             return "Valid";
         }
 

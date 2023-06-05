@@ -1,7 +1,7 @@
 import { Component, Show } from "solid-js";
 import { prettyStringify } from "../jwt";
 
-export const Payload: Component<{ payload?: Record<string, unknown> }> = (props) => {
+export const Payload: Component<{ payload: Record<string, unknown> | null }> = (props) => {
     return (
         <div>
             <h2 class="text-red-900">Payload</h2>

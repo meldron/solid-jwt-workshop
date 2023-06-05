@@ -1,7 +1,7 @@
 import { Component, Show } from "solid-js";
 import { JWTHeader, prettyStringify } from "../jwt";
 
-export const Header: Component<{ header?: JWTHeader }> = (props) => {
+export const Header: Component<{ header: JWTHeader | null }> = (props) => {
     return (
         <div>
             <h2 class="text-red-900">Header</h2>
