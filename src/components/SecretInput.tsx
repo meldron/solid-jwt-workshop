@@ -1,11 +1,7 @@
 import { Component } from "solid-js";
+import { getSecret, setSecret } from "../stores/tokenStore";
 
-export interface SecretInputProps {
-    secret: string;
-    setSecret: (value: string) => void;
-}
-
-export const SecretInput: Component<SecretInputProps> = (props) => {
+export const SecretInput: Component = () => {
     return (
         <div>
             <h2 class="text-red-900">Secret</h2>
@@ -13,8 +9,8 @@ export const SecretInput: Component<SecretInputProps> = (props) => {
                 <input
                     class="input w-full border-blue-400 focus:outline-blue-400"
                     placeholder="HS256 Secret"
-                    value={props.secret}
-                    onInput={(event) => props.setSecret(event.target.value)}
+                    value={getSecret()}
+                    onInput={(event) => setSecret(event.target.value)}
                 />
             </div>
         </div>

@@ -1,4 +1,4 @@
-import { Component, createMemo, createSignal } from "solid-js";
+import { Component, createMemo, createSignal, onMount } from "solid-js";
 
 import { parseJwt } from "./jwt";
 import { Header } from "./components/Header";
@@ -6,6 +6,7 @@ import { Payload } from "./components/Payload";
 import { TokenInput } from "./components/TokenInput";
 import { Signature } from "./components/Signature";
 import { SecretInput } from "./components/SecretInput";
+import { getHeader, getPayload, getSecret, getToken, setTokenRaw } from "./stores/tokenStore";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const JWT_EXAMPLE = {
@@ -23,26 +24,22 @@ const exampleToken =
     "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2lkbS5wbGFuZXQuZXhwcmVzcyIsInN1YiI6ImIwYTI5MGYxLTExMDEtNDhkMi04YWRjLTA5OTJiYmIyMDdhYSIsIm5hbWUiOiJQaGlsaXAgRnJ5IiwiYXVkIjoiczZCaGRSa3F0MyIsImV4cCI6MzI1MDM2ODAwMDAsImlhdCI6MzI0NjgwOTYwMDAsIm5iZiI6MzI0NjgwOTYwMDAsInNjb3BlIjoicmVhZCJ9.ELoI9eFMeYgiiAOR8EBI_WVeNSG3I4bGyqxeZHuMLAA";
 
 const App: Component = () => {
-    const [tokenRaw, setTokenRaw] = createSignal(exampleToken);
-
-    const token = createMemo(() => parseJwt(tokenRaw()));
-
-    const [secret, setSecret] = createSignal("");
+    onMount(() => setTokenRaw(exampleToken));
 
     return (
         <div class="grid m-5">
-            <TokenInput tokenRaw={tokenRaw()} setTokenRaw={setTokenRaw} />
+            <TokenInput />
             <div class="divider" />
             <div class="grid gap-1 grid-cols-1 lg:grid-cols-2">
-                <Header header={token()?.header} />
+                <Header header={getHeader()} />
                 <div class="divider md:hidden" />
-                <Payload payload={token()?.payload} />
+                <Payload payload={getPayload()} />
             </div>
             <div class="divider" />
             <div class="grid gap-5 grid-cols-1 lg:grid-cols-3 overflow-ellipsis">
-                <SecretInput secret={secret()} setSecret={setSecret} />
+                <SecretInput />
                 <div class="divider md:hidden" />
-                <Signature token={token()} secret={secret()} />
+                <Signature token={getToken()} secret={getSecret()} />
             </div>
         </div>
     );
