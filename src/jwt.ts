@@ -32,3 +32,7 @@ export function parseJwt(encoded: string): JWT | null {
 
     return { encoded, header, headerEncoded, payload, payloadEncoded, signature };
 }
+
+export function prettyStringify(input: unknown): string {
+    return JSON.stringify(input, null, 2);
+}
