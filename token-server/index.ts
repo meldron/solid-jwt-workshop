@@ -69,7 +69,7 @@ app.post("/token", (req, res) => {
 });
 
 // Route that requires a valid JWT to access
-app.get("/protected", (req, res) => {
+app.get("/fact", (req, res) => {
     const fact = getRandomElement(ANIMAL_FACTS);
     res.json({ fact });
 });
