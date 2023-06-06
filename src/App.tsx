@@ -1,12 +1,12 @@
-import { Component, createMemo, createSignal, onMount } from "solid-js";
+import { Component, onMount } from "solid-js";
 
-import { parseJwt } from "./jwt";
 import { Header } from "./components/Header";
 import { Payload } from "./components/Payload";
 import { TokenInput } from "./components/TokenInput";
 import { Signature } from "./components/Signature";
 import { SecretInput } from "./components/SecretInput";
 import { getHeader, getPayload, getSecret, getToken, setTokenRaw } from "./stores/tokenStore";
+import { AnimalFact } from "./components/AnimalFact";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const JWT_EXAMPLE = {
@@ -28,7 +28,11 @@ const App: Component = () => {
 
     return (
         <div class="grid m-5">
-            <TokenInput />
+            <div class="grid gap-5 grid-cols-1 lg:grid-cols-2">
+                <TokenInput />
+                <div class="divider md:hidden" />
+                <AnimalFact />
+            </div>
             <div class="divider" />
             <div class="grid gap-1 grid-cols-1 lg:grid-cols-2">
                 <Header header={getHeader()} />
